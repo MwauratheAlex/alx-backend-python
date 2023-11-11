@@ -56,3 +56,30 @@ class GithubOrgClient:
         except KeyError:
             return False
         return has_license
+
+def main():
+    # Create an instance of GithubOrgClient for a specific organization
+    org_name = "google"  # Replace with the name of a GitHub organization
+    client = GithubOrgClient(org_name)
+
+    # Fetch organization details
+    org_details = client.org  # Access 'org' as an attribute, not a method
+    print("Organization Details:")
+    print(org_details)
+
+    # Fetch the list of public repositories
+    public_repos = client.public_repos()
+    print("\nPublic Repositories:")
+    for repo in public_repos:
+        print(repo)
+
+    # Fetch the list of public repositories with a specific license (optional)
+    license_type = "YOUR_LICENSE_TYPE"  # Replace with a license type, e.g., "mit"
+    public_repos_with_license = client.public_repos(license=license_type)
+    print(f"\nPublic Repositories with '{license_type}' License:")
+    for repo in public_repos_with_license:
+        print(repo)
+
+if __name__ == "__main__":
+    main()
+
