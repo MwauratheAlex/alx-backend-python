@@ -39,10 +39,10 @@ class TestGithubOrgClient(TestCase):
                     test_client._public_repos_url, mock_payload["repos_url"])
 
     @parameterized.expand([
-        ([{"name": "repo_1"}, {"name": "repo_2"}], "url_1", ),
-        ([{"name": "repo_3"}, {"name": "repo_4"}], "url_2", ),
-        ([{"name": "repo_5"}, {"name": "repo_6"}], "url_3", ),
-        ([{"name": "repo_7"}, {"name": "repo_8"}], "url_4", ),
+        ([{"name": "repo_1"}, {"name": "repo_2"}], "url_1"),
+        ([{"name": "repo_3"}, {"name": "repo_4"}], "url_2"),
+        ([{"name": "repo_5"}, {"name": "repo_6"}], "url_3"),
+        ([{"name": "repo_7"}, {"name": "repo_8"}], "url_4"),
     ])
     @patch('client.get_json')
     def test_public_repos(self, test_payload, test_url, mock_get_json):
