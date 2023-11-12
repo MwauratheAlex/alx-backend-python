@@ -38,15 +38,14 @@ class TestGithubOrgClient(TestCase):
             self.assertEqual(
                 test_client._public_repos_url, mock_payload["repos_url"])
 
-    @parameterized.expand([
-        ({
+    @patch('client.get_json')
+    def test_public_repos(self, mock_get_json):
+        """  Unit-tests for  GithubOrgClient.public_repos"""
+        test_payload = {
             'repos_url': "https://api.github.com/users/google/repos",
             'repos': [{"name": "episodes.dart", }, {"name": "kratu", }, ]
-        },),
-    ])
-    @patch('client.get_json')
-    def test_public_repos(self, test_payload, mock_get_json):
-        """  Unit-tests for  GithubOrgClient.public_repos"""
+        }
+
         mock_get_json.return_value = test_payload["repos"]
         with patch(
                 'client.GithubOrgClient._public_repos_url',
@@ -63,5 +62,5 @@ class TestGithubOrgClient(TestCase):
             ]
 
             self.assertEqual(test_public_repos, expected_public_repos_return)
-            mock_get_json.assert_called_once()
             mock_public_repos_url.assert_called_once()
+            mock_get_json.assert_called_once()
