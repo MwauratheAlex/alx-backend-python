@@ -75,3 +75,7 @@ class TestGithubOrgClient(TestCase):
                 GithubOrgClient.has_license(test_repo, test_license),
                 expected_result
         )
+
+
+class TestIntegrationGithubOrgClient(TestCase):
+    pass

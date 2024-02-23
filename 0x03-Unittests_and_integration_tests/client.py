@@ -57,6 +57,7 @@ class GithubOrgClient:
             return False
         return has_license
 
+
 def main():
     # Create an instance of GithubOrgClient for a specific organization
     org_name = "google"  # Replace with the name of a GitHub organization
@@ -74,12 +75,12 @@ def main():
         print(repo)
 
     # Fetch the list of public repositories with a specific license (optional)
-    license_type = "YOUR_LICENSE_TYPE"  # Replace with a license type, e.g., "mit"
+    license_type = "YOUR_LICENSE_TYPE"  # Replace with a license type,e.g."mit"
     public_repos_with_license = client.public_repos(license=license_type)
     print(f"\nPublic Repositories with '{license_type}' License:")
     for repo in public_repos_with_license:
         print(repo)
 
+
 if __name__ == "__main__":
     main()
-
